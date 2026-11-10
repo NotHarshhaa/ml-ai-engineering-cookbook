@@ -158,6 +158,7 @@ print("Adam final:       ", p_ad[-1])
 - **Headline:** `import numpy as np`
 - **Defines:** def `quadratic`; def `gd`; def `momentum`; def `adam`
 - **Key imports:** `import numpy as np`
+- **Notable calls:** `Adam`
 
 > **Takeaway:** GD crawls down the bowl axis-by-axis; Momentum surges through
 > the long axis and damps the short one; Adam adapts its step size per
@@ -202,6 +203,7 @@ print("PyTorch Adam final:", theta.detach().numpy())
 
 - **Headline:** `import torch`
 - **Key imports:** `import torch`
+- **Notable calls:** `Adam`, `autograd`, `backward`
 
 > **Takeaway:** PyTorch's `torch.optim.Adam` is doing *exactly* what our
 > scratch Adam did — `b1`, `b2`, `eps`, and bias correction are all the same
@@ -256,6 +258,7 @@ ax.legend(); plt.tight_layout(); plt.show()
 
 - **Headline:** `import matplotlib.pyplot as plt`
 - **Key imports:** `import matplotlib.pyplot as plt`
+- **Notable calls:** `Adam`
 
 > **Takeaway:** When the loss surface is an elongated bowl (the typical case
 > for ill-conditioned problems), plain GD wastes most of its steps oscillating

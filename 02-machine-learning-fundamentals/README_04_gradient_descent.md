@@ -161,6 +161,7 @@ print("closed form:", np.linalg.lstsq(X, y, rcond=None)[0])
 - **Headline:** `import numpy as np`
 - **Defines:** def `loss_grad`; def `batch_gd`; def `sgd`; def `minibatch_gd`
 - **Key imports:** `import numpy as np`
+- **Notable calls:** `SGD`
 
 > **Takeaway:** Batch GD's loss curve is smooth but each step is expensive;
 > SGD's is noisy but each step is O(1) in the dataset size; Mini-batch is
@@ -199,7 +200,7 @@ print("sklearn OLS weights:", LinearRegression().fit(X, y).coef_)
 
 - **Headline:** `from sklearn.linear_model import SGDRegressor, LinearRegression`
 - **Key imports:** `from sklearn.linear_model import SGDRegressor`
-- **Notable calls:** `LinearRegression`
+- **Notable calls:** `LinearRegression`, `SGD`
 
 > ---
 > 
@@ -243,6 +244,7 @@ ax.set_yscale("log"); ax.legend(); plt.tight_layout(); plt.show()
 
 - **Headline:** `import matplotlib.pyplot as plt`
 - **Key imports:** `import matplotlib.pyplot as plt`
+- **Notable calls:** `SGD`
 
 > **Takeaway:** Log-scale training curves are the universal language of
 > training-loop debugging. If a curve is flat, your learning rate is too

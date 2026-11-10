@@ -18,21 +18,38 @@ category_encoders>=2.6
 altair>=5.0
 statsmodels>=0.14
 
-# Deep learning (later modules — install on demand)
-# torch>=2.1
-# tensorflow>=2.15
+# Dimensionality reduction (Module 05)
+umap-learn>=0.5
 
-# Generative / agentic (later modules — install on demand)
-# transformers>=4.36
-# langchain>=0.1
-# langgraph>=0.0.40
-# faiss-cpu>=1.7
-# chromadb>=0.4
+# Deep learning (Module 06)
+torch>=2.1
+torchvision>=0.16
+
+# NLP (Module 08)
+nltk>=3.8
+gensim>=4.3
+datasets>=2.16
+
+# Transformers & LLMs (Module 09)
+transformers>=4.36
+tokenizers>=0.15
+sentence-transformers>=2.3
+
+# Generative AI (Module 10)
+faiss-cpu>=1.7
+chromadb>=0.4
+rank-bm25>=0.2.2
 
 # MLOps (later modules — install on demand)
 # mlflow>=2.9
 # dvc>=3.30
 # fastapi>=0.108
 
-# Dimensionality reduction (Module 05)
-umap-learn>=0.5
+# Agentic AI (later modules — install on demand)
+# langchain>=0.1
+# langgraph>=0.0.40
+# langsmith>=0.0.80
+
+# Model serving (later modules — install on demand)
+# vllm>=0.2
+# ollama>=0.1

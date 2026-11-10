@@ -173,6 +173,7 @@ print("compose ->", square_then_plus_one(3))                # (3^2)+1 = 10
 
 - **Headline:** `def mse(y_true, y_pred):`
 - **Defines:** def `mse` — Mean squared error — a pure function, easy to test and vectorise.; def `compose` — Mathematical composition: (f . g)(x) = f(g(x)).
+- **Notable calls:** `transforms`
 
 > **Takeaway:** Keep your loss functions pure. Then you can swap `mse` for
 > `mae`, `huber`, `cross_entropy` without touching the training loop.
