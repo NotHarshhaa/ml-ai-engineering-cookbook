@@ -243,8 +243,8 @@ try:
     import guardrails
     print("guardrails-ai installed; pattern would be:")
     print("  from guardrails import Guard, StringValidator")
-    print("  guard = Guard.from_string(validators=[StringValidator(on_fail="exception")])
-    print("  output = guard(prompt, model="gpt-4o-mini")")
+    print('  guard = Guard.from_string(validators=[StringValidator(on_fail="exception")])')
+    print('  output = guard(prompt, model="gpt-4o-mini")')
 except ImportError:
     print("guardrails-ai not installed — pip install guardrails-ai")
 ```

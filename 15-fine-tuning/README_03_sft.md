@@ -158,17 +158,17 @@ try:
     from datasets import Dataset
 
     print("trl installed; pattern would be:")
-    print("  tokenizer = AutoTokenizer.from_pretrained(...)
-    print("  dataset = Dataset.from_list(sft_data)
-    print("  config = SFTConfig(output_dir='./out', num_train_epochs=3,
-                            per_device_train_batch_size=4, packing=True)
-    print("  trainer = SFTTrainer(
-                            model=model,
-                            args=config,
-                            train_dataset=dataset,
-                            tokenizer=tokenizer,
-                            formatting_func=format_chat)
-    print("  trainer.train()")
+    print("""  tokenizer = AutoTokenizer.from_pretrained(...)
+  dataset = Dataset.from_list(sft_data)
+  config = SFTConfig(output_dir='./out', num_train_epochs=3,
+                     per_device_train_batch_size=4, packing=True)
+  trainer = SFTTrainer(
+                     model=model,
+                     args=config,
+                     train_dataset=dataset,
+                     tokenizer=tokenizer,
+                     formatting_func=format_chat)
+  trainer.train()""")
 except ImportError as e:
     print(f"trl not installed ({e}) — pip install trl")
 ```

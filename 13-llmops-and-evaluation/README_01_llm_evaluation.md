@@ -212,8 +212,7 @@ llm_eval = [
 ]
 print(f"eval set size: {len(llm_eval)}")
 for qa in llm_eval:
-    print(f"  Q: {qa['q']}
-    gold: {qa['gold']}  type: {qa['type']}")
+    print(f"  Q: {qa['q']}  gold: {qa['gold']}  type: {qa['type']}")
 ```
 
 **What this code does:**

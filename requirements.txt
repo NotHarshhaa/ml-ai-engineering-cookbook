@@ -25,6 +25,10 @@ umap-learn>=0.5
 torch>=2.1
 torchvision>=0.16
 
+# Computer vision (Module 07)
+pillow>=10.0
+requests>=2.31
+
 # NLP (Module 08)
 nltk>=3.8
 gensim>=4.3

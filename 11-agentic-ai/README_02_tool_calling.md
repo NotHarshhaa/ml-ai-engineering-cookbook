@@ -395,7 +395,8 @@ for args, expected_valid in test_cases:
     except Exception:
         valid = False
     ok = valid == expected_valid
-    '    print(f"  args={args}  expected_valid={expected_valid}  actual={valid}  ok_or_FAIL={ok}")\n'    passed += int(ok)
+    print(f"  args={args}  expected_valid={expected_valid}  actual={valid}  ok_or_FAIL={ok}")
+    passed += int(ok)
 print(f"\nvalidation accuracy: {passed}/{len(test_cases)}")
 ```
 
