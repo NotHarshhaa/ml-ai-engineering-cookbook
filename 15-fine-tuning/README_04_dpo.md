@@ -185,8 +185,8 @@ try:
     print("      tokenizer=tokenizer,")
     print("  )")
     print("  trainer.train()")
-except ImportError as e:
-    print(f"trl not installed ({e})")
+except Exception as e:
+    print(f"trl unavailable ({e})")
 ```
 
 **What this code does:**

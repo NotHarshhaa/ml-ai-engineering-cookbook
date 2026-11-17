@@ -183,7 +183,7 @@ titanic = pd.read_csv(
 print("missing rate per column:")
 print((titanic.isna().mean() * 100).round(2).sort_values(ascending=False))
 print("\nnumeric/categorical split:")
-print(titanic.dtypes.groupby(titanic.dtypes).size())
+print(titanic.dtypes.astype(str).value_counts())
 ```
 
 **What this code does:**

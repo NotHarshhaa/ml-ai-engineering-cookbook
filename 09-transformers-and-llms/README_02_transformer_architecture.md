@@ -394,7 +394,7 @@ losses = []
 for step in range(200):
     opt.zero_grad()
     logits = model(X_t)        # (B, T, V)
-    loss = loss_fn(logits.reshape(-1, V), y_t.reshape(-1).repeat_interleave(SEQ_LEN) if False else y_t)
+    loss = loss_fn(logits[:, -1, :], y_t)
     loss.backward(); opt.step(); sched.step()
     losses.append(loss.item())
 

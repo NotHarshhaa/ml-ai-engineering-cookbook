@@ -187,8 +187,9 @@ print("Adam final:       ", p_ad[-1])
 # PyTorch optimizers on the same quadratic problem.
 import torch
 
-A_t = torch.tensor(A); b_t = torch.tensor(b)               # NumPy -> torch
-theta = torch.tensor([4.0, -4.0], requires_grad=True)     # leaf we optimise
+A_t = torch.tensor(A, dtype=torch.float64)
+b_t = torch.tensor(b, dtype=torch.float64)
+theta = torch.tensor([4.0, -4.0], dtype=torch.float64, requires_grad=True)     # leaf we optimise
 opt = torch.optim.Adam([theta], lr=0.1)                    # Adam on theta
 
 for step in range(200):

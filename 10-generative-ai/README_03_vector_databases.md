@@ -239,7 +239,7 @@ try:
 
     # 2. IVF (approximate, fast).
     quantizer = faiss.IndexFlatIP(64)
-    ivf = faiss.IndexIVFFlat(quantizer, 64, nlist=50)
+    ivf = faiss.IndexIVFFlat(quantizer, 64, 50)
     ivf.train(X)
     ivf.add(X)
     ivf.nprobe = 5   # number of clusters to probe
@@ -247,7 +247,7 @@ try:
     print("IndexIVFFlat top-5 sims:", sims2[0].round(3))
 
     # 3. HNSW (graph-based, fast + good recall).
-    hnsw = faiss.IndexHNSWFlat(64, M=16)
+    hnsw = faiss.IndexHNSWFlat(64, 16)
     hnsw.add(X)
     sims3, idx3 = hnsw.search(q, k=5)
     print("IndexHNSWFlat top-5 sims:", sims3[0].round(3))
@@ -329,12 +329,12 @@ print(f"dataset shape: {X.shape}, total size: {X.nbytes / 1e6:.1f} MB")
 
 # Time exact search at multiple sizes.
 for N in [1000, 5000, 10000]:
-    db = ExactVectorDB(dim=1024)
-    db.add(X[:N])
+    large_db = ExactVectorDB(dim=1024)
+    large_db.add(X[:N])
     q = rng.standard_normal(1024)
     t0 = time.perf_counter()
     for _ in range(10):
-        db.search(q, k=5)
+        large_db.search(q, k=5)
     t1 = time.perf_counter()
     print(f"  N={N:6d}  exact search avg: {(t1-t0)/10*1000:.2f} ms")
 ```

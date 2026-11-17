@@ -360,7 +360,8 @@ def average_precision(pred_boxes, pred_scores, gt_boxes, iou_thresh=0.5):
     recall = tp_cum / max(1, len(gt_boxes))
     precision = tp_cum / np.maximum(1, tp_cum + fp_cum)
     # AP = area under precision-recall curve (step function).
-    ap = np.trapz(precision, recall)
+    from scipy.integrate import trapezoid
+    ap = trapezoid(precision, recall)
     return ap
 
 # Toy example: 3 GT boxes, 5 predictions (some correct, some wrong).

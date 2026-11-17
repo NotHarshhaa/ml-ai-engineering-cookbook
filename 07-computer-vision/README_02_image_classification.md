@@ -158,8 +158,8 @@ test_tf = transforms.Compose([
     transforms.Normalize(cifar_mean, cifar_std),
 ])
 
-train_ds = datasets.CIFAR10("./data", train=True,  download=True, transform=train_tf)
-test_ds  = datasets.CIFAR10("./data", train=False, download=True, transform=test_tf)
+except Exception as e:
+    print(f"trl unavailable
 print("train size:", len(train_ds), " test size:", len(test_ds))
 
 class CIFARCNN(nn.Module):
@@ -214,7 +214,8 @@ print("parameter count:", sum(p.numel() for p in model.parameters()))
 import matplotlib.pyplot as plt
 import numpy as np
 
-class_names = train_ds.classes
+class_names = ["airplane", "automobile", "bird", "cat", "deer",
+               "dog", "frog", "horse", "ship", "truck"]
 fig, axes = plt.subplots(2, 4, figsize=(10, 5))
 for ax in axes.flat:
     idx = np.random.randint(len(train_ds))

@@ -94,6 +94,8 @@ Every notebook in this cookbook follows this structure wherever applicable:
 ### Code cell #1
 ```python
 # A tiny autograd engine — the heart of PyTorch in 30 lines.
+import numpy as np
+import numpy as np
 class Tensor:
     """Minimal autograd tensor — wraps a numpy array + a graph node."""
     def __init__(self, data, _parents=(), _op=""):
@@ -172,6 +174,7 @@ print("dz/dy =", y.grad, "(expected 3)")
 ### Code cell #2
 ```python
 import torch
+import numpy as np
 
 # 1. Tensor creation: from Python list, numpy, or random.
 a = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32)
@@ -323,6 +326,8 @@ for epoch in range(200):
         loss.backward()
         opt.step()
         losses.append(loss.item())
+
+import matplotlib.pyplot as plt
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 axes[0].plot(losses); axes[0].set_title("Loss curve"); axes[0].set_yscale("log")

@@ -228,7 +228,8 @@ plt.tight_layout(); plt.show()
 
 ### Code cell #6
 ```python
-from sklearn.model_selection import cross_val_score, Pipeline
+from sklearn.model_selection import cross_val_score
+from sklearn.pipeline import Pipeline
 
 # Naive (leaky): select on full data, then CV
 selector = SelectKBest(mutual_info_regression, k=5)
@@ -249,7 +250,8 @@ print("(Proper is what you would actually deploy with.)")
 
 **What this code does:**
 
-- **Headline:** `from sklearn.model_selection import cross_val_score, Pipeline`
+- **Headline:** `from sklearn.model_selection import cross_val_score
+from sklearn.pipeline import Pipeline`
 - **Key imports:** `from sklearn.model_selection import cross_val_score`
 - **Notable calls:** `LinearRegression`, `cross_val_score`
 

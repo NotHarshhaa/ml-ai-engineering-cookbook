@@ -152,6 +152,19 @@ print(f"\nSFT loss (only completion tokens): {loss.item():.4f}")
 
 ### Code cell #2
 ```python
+sft_data = [
+    {"prompt": "What is 2 + 2?", "completion": "2 + 2 = 4"},
+    {"prompt": "Capital of France?", "completion": "Paris"},
+    {"prompt": "Translate 'hello' to French.", "completion": "bonjour"},
+    {"prompt": "Reverse 'abc'.", "completion": "cba"},
+    {"prompt": "What color is the sky?", "completion": "Blue"},
+    {"prompt": "Square root of 16?", "completion": "4"},
+    {"prompt": "Author of 'Hamlet'?", "completion": "William Shakespeare"},
+    {"prompt": "What is Python?", "completion": "A programming language"},
+    {"prompt": "Largest planet?", "completion": "Jupiter"},
+    {"prompt": "Boiling point of water?", "completion": "100 degrees Celsius"},
+]
+
 try:
     from trl import SFTTrainer, SFTConfig
     from transformers import AutoTokenizer
@@ -169,8 +182,8 @@ try:
                      tokenizer=tokenizer,
                      formatting_func=format_chat)
   trainer.train()""")
-except ImportError as e:
-    print(f"trl not installed ({e}) — pip install trl")
+except Exception as e:
+    print(f"trl unavailable ({e}) — pip install trl")
 ```
 
 **What this code does:**

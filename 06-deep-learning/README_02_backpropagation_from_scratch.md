@@ -283,6 +283,8 @@ for epoch in range(2000):
     for name in ["W1", "b1", "W2", "b2"]:
         setattr(net, name, getattr(net, name) - lr * grads[name])
 
+import matplotlib.pyplot as plt
+
 plt.figure(figsize=(10, 4))
 plt.subplot(1, 2, 1)
 plt.scatter(x, y, s=8, label="data", alpha=0.6)

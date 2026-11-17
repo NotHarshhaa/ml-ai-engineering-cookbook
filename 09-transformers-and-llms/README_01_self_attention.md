@@ -210,7 +210,7 @@ attn = ScaledDotProductAttention()
 out, w = attn(Q, K, V)
 print("output shape:", out.shape)
 print("weights shape:", w.shape)
-print("row sums (one head):", w[0, 0].sum(dim=-1).round(3))
+print("row sums (one head):", (w[0, 0].sum(dim=-1) * 1000).round() / 1000)
 ```
 
 **What this code does:**

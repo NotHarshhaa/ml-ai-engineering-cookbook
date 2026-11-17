@@ -157,7 +157,7 @@ import numpy as np
 # Mock embedding function: hash-based deterministic embeddings.
 def embed(text, dim=64, seed_offset=0):
     """Hash-based deterministic embedding (mock — no semantic meaning)."""
-    seed = (abs(hash(text)) + seed_offset) % (2**32)
+    seed = (int.from_bytes(hashlib.sha256(text.encode("utf-8")).digest()[:4], "big") + seed_offset) % (2**32)
     rng = np.random.default_rng(seed)
     return rng.standard_normal(dim)
 

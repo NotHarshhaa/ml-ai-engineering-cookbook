@@ -156,20 +156,20 @@ plt.tight_layout(); plt.show()
 
 ### Code cell #3
 ```python
-from sklearn.datasets import fetch_openml
-# MNIST 70000 x 784.  For speed we use 3000 samples.
-mnist = fetch_openml("mnist_784", version=1, as_frame=False)
-idx = np.random.default_rng(0).choice(len(mnist.data), 3000, replace=False)
-X = mnist.data[idx] / 255.0
-y = mnist.target[idx].astype(int)
+from sklearn.datasets import load_digits
+# The built-in 8x8 digits dataset keeps this example small and avoids a large download.
+digits = load_digits()
+idx = np.random.default_rng(0).choice(len(digits.data), 1500, replace=False)
+X = digits.data[idx] / 16.0
+y = digits.target[idx].astype(int)
 print("subset shape:", X.shape)
 ```
 
 **What this code does:**
 
-- **Headline:** `from sklearn.datasets import fetch_openml`
-- **Key imports:** `from sklearn.datasets import fetch_openml`
-- **Notable calls:** `fetch_openml`
+- **Headline:** `from sklearn.datasets import load_digits`
+- **Key imports:** `from sklearn.datasets import load_digits`
+- **Notable calls:** `load_digits`
 
 > ---
 > 
@@ -191,7 +191,7 @@ except Exception:
 plt.figure(figsize=(8, 7))
 plt.scatter(Z[:, 0], Z[:, 1], c=y, cmap="tab10", s=4, alpha=0.7)
 plt.colorbar(label="digit")
-plt.title(f"{name} of MNIST subset")
+plt.title(f"{name} of handwritten digits subset")
 plt.tight_layout(); plt.show()
 ```
 

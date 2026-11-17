@@ -96,6 +96,7 @@ Every notebook in this cookbook follows this structure wherever applicable:
 
 ### Code cell #1
 ```python
+import hashlib
 import numpy as np
 
 # 5 mock documents, each embedded as a random 8-dim vector.
@@ -109,7 +110,7 @@ documents = [
 
 # Mock embedding: hash the text to a fixed-size vector. Deterministic.
 def mock_embed(text, dim=8, seed=0):
-    rng = np.random.default_rng(abs(hash(text)) % (2**32))
+    rng = np.random.default_rng((int.from_bytes(hashlib.sha256(text.encode("utf-8")).digest()[:4], "big") + seed) % (2**32))
     return rng.standard_normal(dim)
 
 # Pre-compute all document embeddings.

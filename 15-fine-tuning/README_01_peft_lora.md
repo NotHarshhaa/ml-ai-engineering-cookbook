@@ -126,7 +126,7 @@ class LoRALinear(nn.Module):
     def merge(self):
         """Merge the LoRA adapter into the base weight for inference."""
         with torch.no_grad():
-            self.base.weight.add_(self.scaling * (self.A @ self.B))
+            self.base.weight.add_(self.scaling * (self.A @ self.B).T)
 
 # Demo: create a linear layer + LoRA adapter.
 torch.manual_seed(0)

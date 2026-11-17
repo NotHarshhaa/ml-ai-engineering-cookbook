@@ -155,7 +155,8 @@ axes[0, 1].hist(y, bins=30, color="steelblue", edgecolor="white")
 axes[0, 1].set_title("Histogram of y")
 
 # Bottom-left: boxplot — five-number summary (min, q1, median, q3, max).
-axes[1, 0].boxplot([x, y], labels=["x", "y"])
+axes[1, 0].boxplot([x, y])
+axes[1, 0].set_xticklabels(["x", "y"])
 axes[1, 0].set_title("Boxplot")
 
 # Bottom-right: ECDF — the most honest distribution plot.

@@ -247,17 +247,21 @@ import tempfile, os
 
 csv_url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
 tmp = tempfile.NamedTemporaryFile(suffix=".csv", delete=False)
+tmp.close()  # Windows cannot reopen a named temporary file while it is still open.
+tmp.close()  # Windows cannot reopen a named temporary file while it is still open.
 urlretrieve(csv_url, tmp.name)
 
 # Skip header; last column is the species string.
 # dtype=None + encoding="utf-8" returns a structured array (one type per column).
-raw = np.genfromtxt(tmp.name, delimiter=",", skip_header=1, dtype=None,
-                    encoding="utf-8")
+raw = np.genfromtxt(tmp.name, delimiter=",", skip_header=1, dtype=str,
+                    encoding="utf-8", ndmin=2)
 os.unlink(tmp.name)
+if raw.shape[1] != 5:
+    raise ValueError(f"Expected 5 Iris columns, got shape {raw.shape}")
 
-# Stack the first 4 columns (the numeric features) into a 2-D float array.
-features = np.stack([row[:4] for row in raw]).astype(np.float64)
-species = np.array([row[4] for row in raw])
+# Parse the first 4 columns as numeric features; the last column is the species.
+features = raw[:, :4].astype(np.float64)
+species = raw[:, 4]
 print("feature matrix shape:", features.shape)
 print("feature means per column:", features.mean(axis=0).round(3))
 print("unique species:", np.unique(species))

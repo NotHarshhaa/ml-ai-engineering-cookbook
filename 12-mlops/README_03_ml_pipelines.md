@@ -124,7 +124,7 @@ class MiniPipeline:
             node = self.nodes[name]
             in_values = [outputs[v] for v in node["inputs"]]
             # Hash for caching.
-            h = self._hash((name, str(in_values), str(inputs)))
+            h = self._hash((name, in_values, inputs))
             cache_file = self.cache_dir / f"{name}_{h}.pkl"
             if cache_file.exists():
                 print(f"  [cache hit] {name}")
@@ -138,7 +138,9 @@ class MiniPipeline:
                 cache_file.write_bytes(pickle.dumps(result))
             for out in node["outputs"]:
                 outputs[out] = result
-        return outputs
+        if target not in outputs:
+            raise KeyError(f"pipeline target {target!r} was not produced")
+        return {target: outputs[target]}
 
     def _topo_sort(self):
         # Trivial: order by insertion (works because we add edges in order).

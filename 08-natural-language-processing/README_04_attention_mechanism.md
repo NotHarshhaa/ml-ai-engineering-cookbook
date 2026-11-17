@@ -216,7 +216,7 @@ s_dec = torch.randn(3, 8)
 context, weights = attn(h_enc, s_dec)
 print("context shape:", context.shape)   # (3, 8)
 print("weights shape:", weights.shape)   # (3, 5)
-print("weights sum per batch:", weights.sum(dim=-1).round(3))
+print("weights sum per batch:", (weights.sum(dim=-1) * 1000).round() / 1000)
 ```
 
 **What this code does:**

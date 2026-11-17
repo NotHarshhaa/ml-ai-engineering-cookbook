@@ -311,6 +311,8 @@ import tempfile, os
 
 csv_url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
 tmp = tempfile.NamedTemporaryFile(suffix=".csv", delete=False)
+tmp.close()  # Windows cannot reopen a named temporary file while it is still open.
+tmp.close()  # Windows cannot reopen a named temporary file while it is still open.
 urlretrieve(csv_url, tmp.name)        # downloads to a local temp file
 
 with open(tmp.name) as f:

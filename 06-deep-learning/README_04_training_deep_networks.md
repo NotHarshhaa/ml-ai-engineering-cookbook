@@ -169,8 +169,8 @@ yt_te = torch.tensor(y_te, dtype=torch.long)
 
 def make_model(use_bn):
     layers = []
-    for _ in range(4):
-        layers.append(nn.Linear(2, 16))
+    for layer_idx in range(4):
+        layers.append(nn.Linear(2 if layer_idx == 0 else 16, 16))
         if use_bn:
             layers.append(nn.BatchNorm1d(16))
         layers.append(nn.ReLU())

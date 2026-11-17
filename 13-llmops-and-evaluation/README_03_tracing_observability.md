@@ -263,13 +263,13 @@ try:
     provider = TracerProvider()
     provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
     trace.set_tracer_provider(provider)
-    tracer = trace.get_tracer("demo")
+    otel_tracer = trace.get_tracer("demo")
 
-    with tracer.start_as_current_span("rag_request") as span:
+    with otel_tracer.start_as_current_span("rag_request") as span:
         span.set_attribute("user_query", "What is RAG?")
-        with tracer.start_as_current_span("retrieve"):
+        with otel_tracer.start_as_current_span("retrieve"):
             import time; time.sleep(0.02)
-        with tracer.start_as_current_span("generate"):
+        with otel_tracer.start_as_current_span("generate"):
             span.set_attribute("model", "gpt-4o-mini")
             time.sleep(0.05)
     print("OTel trace sent to console exporter")
